@@ -13,24 +13,25 @@ function App() {
       createQrCode();
     }
   }
-  const createQrCodeForEmployee = () => {
-    let newString = document.getElementById("elQRcodeString").value;
-    if(typeof parseInt(newString) === "number" && isNaN(newString) === false){
-      let pJsonData = employees.filter(iData => {
-        return iData.id === parseInt(newString)
-      })
-      if(pJsonData.length){
-        let jsonDataForQr = JSON.stringify(pJsonData);
-        setStringForQrCode(jsonDataForQr);
-      }
-      else{
-        alert("Invalid Employee id");
-      }
-    }
-    else{
-      alert("Enter valid employee id")
-    }
-  }
+  // const createQrCodeForEmployee = () => {
+  //   let newString = document.getElementById("elQRcodeString").value;
+  //   if(typeof parseInt(newString) === "number" && isNaN(newString) === false){
+  //     let pJsonData = employees.filter(iData => {
+  //       return iData.id === parseInt(newString)
+  //     })
+  //     if(pJsonData.length){
+  //       let jsonDataForQr = JSON.stringify(pJsonData);
+  //       setStringForQrCode(jsonDataForQr);
+  //     }
+  //     else{
+  //       alert("Invalid Employee id");
+  //     }
+  //   }
+  //   else{
+  //     alert("Enter valid employee id")
+  //   }
+  // }
+
   const createQrCode = () => {
     let newString = document.getElementById("elQRcodeString").value;
     if(newString){
@@ -39,6 +40,7 @@ function App() {
     else{
       setStringForQrCode("");
       alert("Please Enter the link");
+      console.log(employees);
     }
   }
 
@@ -55,7 +57,7 @@ function App() {
   }
 
   useEffect(()=>{
-    // getEmployeesData();
+    getEmployeesData();
   },[]);
   return (
     <div className="App">
